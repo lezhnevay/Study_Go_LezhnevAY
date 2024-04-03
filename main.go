@@ -103,7 +103,7 @@ func WalkingSpentCalories(action int, duration, weight, height float64) float64 
 	// ваш код здесь
 	speedMeterPerSecond := kmhInMsec * meanSpeed(action, duration) //перевод км/ч в м/с
 	return ((walkingCaloriesWeightMultiplier*weight + (math.Pow(speedMeterPerSecond, 2)/height)*walkingSpeedHeightMultiplier*weight) * duration * minInH)
-}
+} //((0.035 * ВесСпортсменаВКг + (СредняяСкоростьВМетрахВСекунду**2 / РостВМетрах)* 0.029 * ВесСпортсменаВКг) * ВремяТренировкиВЧасах * minInH)
 
 // Константы для расчета калорий, расходуемых при плавании.
 const (
@@ -136,7 +136,7 @@ func swimmingMeanSpeed(lengthPool, countPool int, duration float64) float64 {
 func SwimmingSpentCalories(lengthPool, countPool int, duration, weight float64) float64 {
 	// ваш код здесь
 	return ((swimmingMeanSpeed(lengthPool, countPool, duration) + swimmingCaloriesMeanSpeedShift) * swimmingCaloriesWeightMultiplier * weight * duration)
-}
+} //(СредняяСкоростьВКм/ч + 1.1) * 2 * ВесСпортсменаВКг * ВремяТренеровкиВЧасах
 
 func input(title string) string {
 	fmt.Print(title)
@@ -186,8 +186,8 @@ func ftracker() bool {
 
 	Show := ShowTrainingInfo(action, trainingType, duration, weight, height, lengthPool, countPool)
 	fmt.Println(Show)
-	answer := input("Продолжить? да-[y], нет-[любой символ]: ")
-	return answer == "Y" || answer == "y"
+	//answer := input("Продолжить? да-[y], нет-[любой символ]: ")
+	return true //answer == "Y" || answer == "y"
 }
 
 func main() {

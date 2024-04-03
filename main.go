@@ -168,9 +168,8 @@ func inputFloat64(title string) float64 {
 	return s
 }
 
-func main() {
-	intro := "Привет спортик! Вводи данные:"
-	fmt.Println(intro)
+func ftracker() bool {
+
 	trainingType := input("Введи вид тренировки(Бег, Ходьба, Плавание):")
 	action := inputInt("Введи количество совершенных действий(число шагов при ходьбе и беге, либо гребков при плавании)")
 	duration := inputFloat64("Введи длительность тренировки в часах:")
@@ -187,5 +186,14 @@ func main() {
 
 	Show := ShowTrainingInfo(action, trainingType, duration, weight, height, lengthPool, countPool)
 	fmt.Println(Show)
+	answer := input("Продолжить? да-[y], нет-[любой символ]: ")
+	return answer == "Y" || answer == "y"
+}
 
+func main() {
+	intro := "Привет спортик! Вводи данные:"
+	fmt.Println(intro)
+	for ftracker() {
+
+	}
 }

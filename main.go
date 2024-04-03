@@ -1,4 +1,4 @@
-package ftracker
+package main
 
 import (
 	"fmt"
@@ -168,7 +168,7 @@ func inputFloat64(title string) float64 {
 	return s
 }
 
-func ftracker() {
+func main() {
 	intro := "Привет спортик! Вводи данные:"
 	fmt.Println(intro)
 	trainingType := input("Введи вид тренировки(Бег, Ходьба, Плавание):")
@@ -185,6 +185,7 @@ func ftracker() {
 		countPool = inputInt("Введи сколько раз переплыл(а) бассейн:")
 	}
 
-	ShowTrainingInfo(action, trainingType, duration, weight, height, lengthPool, countPool)
+	Show := ShowTrainingInfo(action, trainingType, duration, weight, height, lengthPool, countPool)
+	fmt.Println(Show)
 
 }

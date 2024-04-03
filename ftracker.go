@@ -1,4 +1,4 @@
-package main
+package ftracker
 
 import (
 	"fmt"
@@ -137,63 +137,3 @@ func SwimmingSpentCalories(lengthPool, countPool int, duration, weight float64) 
 	// ваш код здесь
 	return ((swimmingMeanSpeed(lengthPool, countPool, duration) + swimmingCaloriesMeanSpeedShift) * swimmingCaloriesWeightMultiplier * weight * duration)
 } //(СредняяСкоростьВКм/ч + 1.1) * 2 * ВесСпортсменаВКг * ВремяТренеровкиВЧасах
-
-func input(title string) string {
-	fmt.Print(title)
-	var s string
-	_, err := fmt.Scanln(&s)
-	if err != nil {
-		fmt.Println(err)
-	}
-	return s
-}
-
-func inputInt(title string) int {
-	fmt.Print(title)
-	var s int
-	_, err := fmt.Scanln(&s)
-	if err != nil {
-		fmt.Println(err)
-	}
-	return s
-}
-
-func inputFloat64(title string) float64 {
-	fmt.Print(title)
-	var s float64
-	_, err := fmt.Scanln(&s)
-	if err != nil {
-		fmt.Println(err)
-	}
-	return s
-}
-
-func ftracker() bool {
-
-	trainingType := input("Введи вид тренировки(Бег, Ходьба, Плавание):")
-	action := inputInt("Введи количество совершенных действий(число шагов при ходьбе и беге, либо гребков при плавании)")
-	duration := inputFloat64("Введи длительность тренировки в часах:")
-	weight := inputFloat64("Введи свой вес в килограммах:")
-	height := inputFloat64("Введи свой рост в см:") / cmInM
-
-	var lengthPool int
-	var countPool int
-
-	if trainingType == "Плавание" {
-		lengthPool = inputInt("Введи длину бассейна в метрах:")
-		countPool = inputInt("Введи сколько раз переплыл(а) бассейн:")
-	}
-
-	Show := ShowTrainingInfo(action, trainingType, duration, weight, height, lengthPool, countPool)
-	fmt.Println(Show)
-	//answer := input("Продолжить? да-[y], нет-[любой символ]: ")
-	return true //answer == "Y" || answer == "y"
-}
-
-func main() {
-	intro := "Привет спортик! Вводи данные:"
-	fmt.Println(intro)
-	for ftracker() {
-
-	}
-}
